@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "himanshujoshi03/django_project:latest"
+        IMAGE_NAME = "jenkins/jenkins:lts"
+        DOCKER_CREDENTIALS_ID = "f4b2b507697c0fe5b451cc8f8599c8428656d130cdb4fe17a852db210b98edf2"
     }
 
     stages {
@@ -15,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${env.IMAGE_NAME} ."
+                    sh 'docker build -t $IMAGE_NAME .'
                 }
             }
         }
@@ -23,8 +24,8 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    withDockerRegistry([credentialsId: 'f4b2b507697c0fe5b451cc8f8599c8428656d130cdb4fe17a852db210b98edf2', url: 'https://index.docker.io/v1/']) {
-                        sh "docker push ${env.IMAGE_NAME}"
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
+                        sh 'docker push $IMAGE_NAME'
                     }
                 }
             }
