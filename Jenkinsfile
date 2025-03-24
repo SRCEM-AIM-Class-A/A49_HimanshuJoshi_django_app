@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "jenkins/jenkins:lts"
-        DOCKER_CREDENTIALS_ID = "f4b2b507697c0fe5b451cc8f8599c8428656d130cdb4fe17a852db210b98edf2"
+        IMAGE_NAME = "himanshujoshi03/django_project"
+        DOCKER_CREDENTIALS_ID = "e5e36bb2-7377-4e4a-a2d7-f13e53fca6cc"
     }
 
     stages {
