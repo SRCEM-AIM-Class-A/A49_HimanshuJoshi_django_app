@@ -18,6 +18,5 @@ A multi-app Django project containerized with Docker and automated with Jenkins 
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/anuj-1410/Django_webApp.git
-cd StudentProject
+git clone https://github.com/SRCEM-AIM-Class-A/A49_HimanshuJoshi_django_app.git
 ```
