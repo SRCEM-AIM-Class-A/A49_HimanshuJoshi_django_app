@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - Himanshu Tech Solutions{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you. Reach out to us through the form below.</p>
+    <form class="mt-4">
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Your Name">
+        </div>
+        <div class="mb-3">
+            <input type="email" class="form-control" placeholder="Your Email">
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+</div>
+{% endblock %}
