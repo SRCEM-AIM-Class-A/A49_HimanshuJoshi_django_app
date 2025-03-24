@@ -15,7 +15,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build("${env.IMAGE_NAME}")
+                    sh "docker build -t ${env.IMAGE_NAME} ."
                 }
             }
         }
@@ -23,8 +23,8 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'e5e36bb2-7377-4e4a-a2d7-f13e53fca6cc') {
-                        docker.image("${env.IMAGE_NAME}").push()
+                    withDockerRegistry([credentialsId: 'e5e36bb2-7377-4e4a-a2d7-f13e53fca6cc', url: 'https://index.docker.io/v1/']) {
+                        sh "docker push ${env.IMAGE_NAME}"
                     }
                 }
             }
